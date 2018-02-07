@@ -733,13 +733,7 @@ class ExchangeTradingAlgorithmLive(ExchangeTradingAlgorithmBase):
             self.performance_needs_update = False
 
         if self.portfolio_needs_update:
-            cash, positions_value = retry(
-                action=self.synchronize_portfolio,
-                attempts=self.attempts['synchronize_portfolio_attempts'],
-                sleeptime=self.attempts['retry_sleeptime'],
-                retry_exceptions=(ExchangeRequestError,),
-                cleanup=lambda: log.warn('Ordering again.')
-            )
+            cash, positions_value = 0
             self.portfolio_needs_update = False
 
         log.info(
