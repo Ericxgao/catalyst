@@ -733,7 +733,8 @@ class ExchangeTradingAlgorithmLive(ExchangeTradingAlgorithmBase):
             self.performance_needs_update = False
 
         if self.portfolio_needs_update:
-            cash, positions_value = 0
+            cash = 0
+            positions_value = 0
             self.portfolio_needs_update = False
 
         log.info(
